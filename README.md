@@ -3,7 +3,7 @@
 **Author:** Lê Phạm Thái Hoàng  
 
 ## 📝 Project Overview
-This project focuses on the **Design and Verification of an Advanced APB Timer IP** using Verilog. The timer features a 64-bit counter with multiple operation modes, an APB bus interface supporting wait states and error responses, and robust interrupt generation. The design has been thoroughly verified against a reference Golden Model, achieving **100% Code Coverage**.
+This project focuses on the **Design and Verification of an Advanced APB Timer IP** using Verilog. The timer features a 64-bit counter with multiple operation modes, an APB bus interface supporting wait states and error responses, and interrupt generation. The design has been verified against a reference Golden Model, achieving **100% Code Coverage**.
 
 ## ✨ Key Features
 - **64-bit Count-up Timer:** Highly precise 64-bit counter with an active-low asynchronous reset.
