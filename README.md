@@ -27,16 +27,16 @@ The IP is partitioned into 5 main sub-modules for clean RTL design:
 5. **Interrupt Logic:** Generates output interrupts based on match conditions and interrupt enable flags.
 
 ## 📊 Register Map
-| Address | Register | Type | Description |
-|---------|----------|------|-------------|
-| `0x00`  | TCR      | R/W  | Timer Control Register (Enables timer, sets divider) |
-| `0x04`  | TDR0     | R/W  | Timer Data Register 0 (Lower 32-bit counter data) |
-| `0x08`  | TDR1     | R/W  | Timer Data Register 1 (Upper 32-bit counter data) |
-| `0x0C`  | TCMP0    | R/W  | Timer Compare Register 0 (Lower 32-bit compare val) |
-| `0x10`  | TCMP1    | R/W  | Timer Compare Register 1 (Upper 32-bit compare val) |
-| `0x14`  | TIER     | R/W  | Timer Interrupt Enable Register |
-| `0x18`  | TISR     | W1C  | Timer Interrupt Status Register |
-| `0x1C`  | THCSR    | R/W  | Timer Halt Control Status Register |
+| Address | Register | Description |
+|---------|----------|-------------|
+| `0x00`  | TCR      | Timer Control Register (Enables timer, sets divider) |
+| `0x04`  | TDR0     | Timer Data Register 0 (Lower 32-bit counter data) |
+| `0x08`  | TDR1     | Timer Data Register 1 (Upper 32-bit counter data) |
+| `0x0C`  | TCMP0    | Timer Compare Register 0 (Lower 32-bit compare val) |
+| `0x10`  | TCMP1    | Timer Compare Register 1 (Upper 32-bit compare val) |
+| `0x14`  | TIER     | Timer Interrupt Enable Register |
+| `0x18`  | TISR     | Timer Interrupt Status Register |
+| `0x1C`  | THCSR    | Timer Halt Control Status Register |
 
 ## 🧪 Verification & Testing
 The design was robustly verified using a comprehensive Verilog testbench environment.
