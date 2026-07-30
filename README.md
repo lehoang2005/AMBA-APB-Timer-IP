@@ -1,4 +1,56 @@
-# AMBA APB Timer IP advanced Project
+# AMBA APB Timer IP (Advanced)
 
-## Introduction
-Designed a 64-bit count-up AMBA APB Timer IP using Verilog with a I/O Register Map, integrating a prescaler (up to 256x) and interrupt generation. Implemented AMBA APB protocol features including 1-cycle wait states, error responses (PSLVERR), byte access transfers (PSTRB), and a halt/debug mode to pause counting.
+**Author:** Lê Phạm Thái Hoàng  
+
+## 📝 Project Overview
+This project focuses on the **Design and Verification of an Advanced APB Timer IP** using Verilog. The timer features a 64-bit counter with multiple operation modes, an APB bus interface supporting wait states and error responses, and robust interrupt generation. The design has been thoroughly verified against a reference Golden Model, achieving **100% Code Coverage**.
+
+## ✨ Key Features
+- **64-bit Count-up Timer:** Highly precise 64-bit counter with an active-low asynchronous reset.
+- **Multiple Operating Modes:**
+  - **Default Mode:** Normal counting speed.
+  - **Control Mode:** Programmable clock divider (prescaler supporting divisions by 2 up to 256).
+  - **Halt Mode:** Supports pausing the timer via debug mode hardware signal or software request (THCSR).
+- **AMBA APB Interface Integration:**
+  - 12-bit address bus for register access.
+  - Supports 1-cycle wait state (`pready`).
+  - Advanced error handling (`pslverr`) for prohibited configurations (e.g., attempting to change clock divider settings while the timer is running).
+  - Supports byte strobe access (`pstrb`).
+- **Interrupt Controller:** Generates interrupts (`tim_int`) when the counter matches the 64-bit compare registers (TCMP0/TCMP1) with masking support.
+
+## 🏗️ Hardware Architecture
+The IP is partitioned into 5 main sub-modules for clean RTL design:
+1. **APB Slave Interface:** Handles APB bus transactions, wait states, and error responses.
+2. **Registers Block:** Contains all configuration and status registers.
+3. **Counter Control:** Manages the clock prescaler, counting modes, and halt logic.
+4. **Counter:** The core 64-bit synchronous counter logic.
+5. **Interrupt Logic:** Generates output interrupts based on match conditions and interrupt enable flags.
+
+## 📊 Register Map
+| Address | Register | Type | Description |
+|---------|----------|------|-------------|
+| `0x00`  | TCR      | R/W  | Timer Control Register (Enables timer, sets divider) |
+| `0x04`  | TDR0     | R/W  | Timer Data Register 0 (Lower 32-bit counter data) |
+| `0x08`  | TDR1     | R/W  | Timer Data Register 1 (Upper 32-bit counter data) |
+| `0x0C`  | TCMP0    | R/W  | Timer Compare Register 0 (Lower 32-bit compare val) |
+| `0x10`  | TCMP1    | R/W  | Timer Compare Register 1 (Upper 32-bit compare val) |
+| `0x14`  | TIER     | R/W  | Timer Interrupt Enable Register |
+| `0x18`  | TISR     | W1C  | Timer Interrupt Status Register |
+| `0x1C`  | THCSR    | R/W  | Timer Halt Control Status Register |
+
+## 🧪 Verification & Testing
+The design was robustly verified using a comprehensive Verilog testbench environment.
+- **Testcases:** 13/13 testcases passed, covering Register Initial/RW checks, APB Protocol (Multiple access, unaligned access, error response), Counter modes, and Interrupts.
+- **Golden Model Verification:** Output data perfectly matches the provided reference Golden Model.
+- **Code Coverage:** Achieved **100% coverage** (Statement, Branch, Toggle) after justified exclusions for unreachable APB protocol violations.
+
+## 📁 Directory Structure
+- `rtl/`: Contains the Verilog source code of the Timer IP.
+- `tb/`: Testbench files and verification environment.
+- `sim/`: Simulation scripts.
+- `testcases/`: Specific testcase scenarios.
+
+## 🛠️ Technologies & Skills
+- **Hardware Description Language:** Verilog
+- **Protocols:** AMBA APB
+- **Domains:** RTL Design, Functional Verification, Code Coverage Analysis, Computer Architecture
