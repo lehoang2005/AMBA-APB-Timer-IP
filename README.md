@@ -25,6 +25,7 @@ The IP is partitioned into 5 main sub-modules for clean RTL design:
 3. **Counter Control:** Manages the clock prescaler, counting modes, and halt logic.
 4. **Counter:** The core 64-bit synchronous counter logic.
 5. **Interrupt Logic:** Generates output interrupts based on match conditions and interrupt enable flags.
+<img width="2048" height="947" alt="block_diagram" src="https://github.com/user-attachments/assets/a75aeaf3-30e3-409a-9a64-2ebaee24d161" />
 
 ## 📊 Register Map
 | Address | Register | Description |
@@ -37,6 +38,7 @@ The IP is partitioned into 5 main sub-modules for clean RTL design:
 | `0x14`  | TIER     | Timer Interrupt Enable Register |
 | `0x18`  | TISR     | Timer Interrupt Status Register |
 | `0x1C`  | THCSR    | Timer Halt Control Status Register |
+| Others  | Reserved |  |
 
 ## 🧪 Verification & Testing
 The design was robustly verified using a comprehensive Verilog testbench environment.
