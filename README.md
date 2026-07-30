@@ -41,6 +41,8 @@ The IP is partitioned into 5 main sub-modules for clean RTL design:
 | Others  | Reserved |  |
 
 ## 🧪 Verification & Testing
+<img width="2048" height="905" alt="image" src="https://github.com/user-attachments/assets/ab8d48ef-fec0-4064-b046-b81f0761ba1d" />
+
 The design was robustly verified using a comprehensive Verilog testbench environment.
 - **Testcases:** 13/13 testcases passed, covering Register Initial/RW checks, APB Protocol (Multiple access, unaligned access, error response), Counter modes, and Interrupts.
 - **Golden Model Verification:** Output data perfectly matches the provided reference Golden Model.
