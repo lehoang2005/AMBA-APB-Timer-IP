@@ -1,0 +1,225 @@
+# vsim -coverage -l apb_protocol_chk.log -c test_bench -voptargs="+cover=bcesft" -assertdebug -do "coverage save -onexit apb_protocol_chk.ucdb; log -r /*;run -all" 
+# Start time: 01:04:47 on Jun 15,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tb/test_bench.v(22): (vopt-2241) Connection width does not match width of port 'tim_paddr'. The port definition is at: ../rtl/timer_top.v(7).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.test_bench(fast)
+# coverage save -onexit apb_protocol_chk.ucdb
+#  log -r /*
+# run -all
+# ====================================================
+# ==============Test Case: check Protocol Test========
+# ====================================================
+# Reseting ...
+# Reset done
+# t=       400 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       551 [TB_READ]: paddr = 00000004 prdata = 33333333
+# -------------------------------------------------
+# t =        551 [[0;32m PASS: prdata 32'33333333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# Check penable does not assert
+# t=       551 [TB_WRITE]: paddr = 00000004 | pwdata = 55555555 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       711 [TB_READ]: paddr = 00000004 prdata = 33333333
+# -------------------------------------------------
+# t =        711 [[0;32m PASS: prdata 32'33333333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=       791 [TB_READ]: paddr = 00000004 prdata = 00000000
+# -------------------------------------------------
+# t =        791 [[0;32m PASS: prdata 32'00000000 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# Check psel does not assert
+# t=       791 [TB_WRITE]: paddr = 00000004 | pwdata = 77777777 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       951 [TB_READ]: paddr = 00000004 prdata = 33333333
+# -------------------------------------------------
+# t =        951 [[0;32m PASS: prdata 32'33333333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      1031 [TB_READ]: paddr = 00000004 prdata = 00000000
+# -------------------------------------------------
+# t =       1031 [[0;32m PASS: prdata 32'00000000 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      1031 [TB_WRITE]: paddr = 00000004 | pwdata = 99999999 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      1191 [TB_READ]: paddr = 00000004 prdata = 99999999
+# -------------------------------------------------
+# t =       1191 [[0;32m PASS: prdata 32'99999999 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# Check tim_pslverr
+# Check prohibit div_val
+# t=      1191 [TB_WRITE]: paddr = 00000000 | pwdata = 00000900 | pstrb = f
+# t=      1251 tim_pslverr is asserted. The data is violated
+# t=      1271 [TB_WRITE]: paddr = 00000000 | pwdata = 00000a00 | pstrb = f
+# t=      1331 tim_pslverr is asserted. The data is violated
+# t=      1351 [TB_WRITE]: paddr = 00000000 | pwdata = 00000d00 | pstrb = f
+# t=      1411 tim_pslverr is asserted. The data is violated
+# t=      1431 [TB_WRITE]: paddr = 00000000 | pwdata = 00000f00 | pstrb = f
+# t=      1491 tim_pslverr is asserted. The data is violated
+# Check div_en change when timer_en H
+# t=      1511 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      1591 [TB_WRITE]: paddr = 00000000 | pwdata = 00000002 | pstrb = f
+# t=      1651 tim_pslverr is asserted. The data is violated
+# Check div_val change when timer_en H
+# t=      1671 [TB_WRITE]: paddr = 00000000 | pwdata = 00000900 | pstrb = f
+# t=      1731 tim_pslverr is asserted. The data is violated
+# t=      1751 [TB_WRITE]: paddr = 00000000 | pwdata = 00000a00 | pstrb = f
+# t=      1811 tim_pslverr is asserted. The data is violated
+# t=      1831 [TB_WRITE]: paddr = 00000000 | pwdata = 00000d00 | pstrb = f
+# t=      1891 tim_pslverr is asserted. The data is violated
+# t=      1911 [TB_WRITE]: paddr = 00000000 | pwdata = 00000f00 | pstrb = f
+# t=      1971 tim_pslverr is asserted. The data is violated
+# t=      1991 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# Check pstrb
+# t=      2071 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      2151 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 0
+# tim_pslverr is not asserted.
+# t=      2311 [TB_READ]: paddr = 00000004 prdata = 00000000
+# -------------------------------------------------
+# t =       2311 [[0;32m PASS: prdata 32'00000000 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      2311 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      2391 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 1
+# tim_pslverr is not asserted.
+# t=      2551 [TB_READ]: paddr = 00000004 prdata = 00000033
+# -------------------------------------------------
+# t =       2551 [[0;32m PASS: prdata 32'00000033 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      2551 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      2631 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 2
+# tim_pslverr is not asserted.
+# t=      2791 [TB_READ]: paddr = 00000004 prdata = 00003300
+# -------------------------------------------------
+# t =       2791 [[0;32m PASS: prdata 32'00003300 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      2791 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      2871 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 3
+# tim_pslverr is not asserted.
+# t=      3031 [TB_READ]: paddr = 00000004 prdata = 00003333
+# -------------------------------------------------
+# t =       3031 [[0;32m PASS: prdata 32'00003333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      3031 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      3111 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 4
+# tim_pslverr is not asserted.
+# t=      3271 [TB_READ]: paddr = 00000004 prdata = 00330000
+# -------------------------------------------------
+# t =       3271 [[0;32m PASS: prdata 32'00330000 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      3271 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      3351 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 5
+# tim_pslverr is not asserted.
+# t=      3511 [TB_READ]: paddr = 00000004 prdata = 00330033
+# -------------------------------------------------
+# t =       3511 [[0;32m PASS: prdata 32'00330033 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      3511 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      3591 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 6
+# tim_pslverr is not asserted.
+# t=      3751 [TB_READ]: paddr = 00000004 prdata = 00333300
+# -------------------------------------------------
+# t =       3751 [[0;32m PASS: prdata 32'00333300 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      3751 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      3831 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 7
+# tim_pslverr is not asserted.
+# t=      3991 [TB_READ]: paddr = 00000004 prdata = 00333333
+# -------------------------------------------------
+# t =       3991 [[0;32m PASS: prdata 32'00333333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      3991 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      4071 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 8
+# tim_pslverr is not asserted.
+# t=      4231 [TB_READ]: paddr = 00000004 prdata = 33000000
+# -------------------------------------------------
+# t =       4231 [[0;32m PASS: prdata 32'33000000 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      4231 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      4311 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = 9
+# tim_pslverr is not asserted.
+# t=      4471 [TB_READ]: paddr = 00000004 prdata = 33000033
+# -------------------------------------------------
+# t =       4471 [[0;32m PASS: prdata 32'33000033 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      4471 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      4551 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = a
+# tim_pslverr is not asserted.
+# t=      4711 [TB_READ]: paddr = 00000004 prdata = 33003300
+# -------------------------------------------------
+# t =       4711 [[0;32m PASS: prdata 32'33003300 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      4711 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      4791 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = b
+# tim_pslverr is not asserted.
+# t=      4951 [TB_READ]: paddr = 00000004 prdata = 33003333
+# -------------------------------------------------
+# t =       4951 [[0;32m PASS: prdata 32'33003333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      4951 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      5031 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = c
+# tim_pslverr is not asserted.
+# t=      5191 [TB_READ]: paddr = 00000004 prdata = 33330000
+# -------------------------------------------------
+# t =       5191 [[0;32m PASS: prdata 32'33330000 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      5191 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      5271 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = d
+# tim_pslverr is not asserted.
+# t=      5431 [TB_READ]: paddr = 00000004 prdata = 33330033
+# -------------------------------------------------
+# t =       5431 [[0;32m PASS: prdata 32'33330033 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      5431 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      5511 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = e
+# tim_pslverr is not asserted.
+# t=      5671 [TB_READ]: paddr = 00000004 prdata = 33333300
+# -------------------------------------------------
+# t =       5671 [[0;32m PASS: prdata 32'33333300 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      5671 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      5751 [TB_WRITE]: paddr = 00000004 | pwdata = 33333333 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      5911 [TB_READ]: paddr = 00000004 prdata = 33333333
+# -------------------------------------------------
+# t =       5911 [[0;32m PASS: prdata 32'33333333 at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      5911 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# TEST STATUS: PASS
+# ** Note: $finish    : ../tb/test_bench.v(71)
+#    Time: 6191 ns  Iteration: 0  Instance: /test_bench
+# Saving coverage database on exit...
+# End time: 01:04:48 on Jun 15,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1

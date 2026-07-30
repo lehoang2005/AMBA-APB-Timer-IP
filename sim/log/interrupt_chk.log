@@ -1,0 +1,177 @@
+# vsim -coverage -l interrupt_chk.log -c test_bench -voptargs="+cover=bcesft" -assertdebug -do "coverage save -onexit interrupt_chk.ucdb; log -r /*;run -all" 
+# Start time: 01:04:54 on Jun 15,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tb/test_bench.v(22): (vopt-2241) Connection width does not match width of port 'tim_paddr'. The port definition is at: ../rtl/timer_top.v(7).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.test_bench(fast)
+# coverage save -onexit interrupt_chk.ucdb
+#  log -r /*
+# run -all
+# ====================================================
+# ==============Test Case: check Interrupt ===========
+# ====================================================
+# Reseting ...
+# Reset done
+# t=       400 [TB_WRITE]: paddr = 0000000c | pwdata = 000000ff | pstrb = f
+# tim_pslverr is not asserted.
+# t=       471 [TB_WRITE]: paddr = 00000010 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       551 [TB_WRITE]: paddr = 00000014 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       631 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =       5890 [[0;32m PASSED: Interrupt is asserted [0m]
+# -------------------------------------------------
+# t=      5890 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# *****Check interrupt status is 1
+# t=      6051 [TB_READ]: paddr = 00000018 prdata = 00000001
+# -------------------------------------------------
+# t =       6051 [[0;32m PASS: prdata 32'00000001 at addr 00000018 is  correct [0m]
+# -------------------------------------------------
+# t=      6051 [TB_WRITE]: paddr = 00000018 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6131 [TB_WRITE]: paddr = 00000004 | pwdata = ffffffff | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6211 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6291 [TB_WRITE]: paddr = 0000000c | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6371 [TB_WRITE]: paddr = 00000010 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6451 [TB_WRITE]: paddr = 00000014 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6531 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =       6730 [[0;32m PASSED: Interrupt is asserted [0m]
+# -------------------------------------------------
+# *****Manual condition when setting TDR0/1
+# t=      6730 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6811 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6891 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6971 [TB_WRITE]: paddr = 0000000c | pwdata = 00000005 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7051 [TB_WRITE]: paddr = 00000010 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7131 [TB_WRITE]: paddr = 00000014 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7211 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =       7490 [[0;32m PASSED: Interrupt is not asserted [0m]
+# -------------------------------------------------
+# *****Check W1C function of TISR
+# t=      7490 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7571 [TB_WRITE]: paddr = 00000004 | pwdata = ffffff00 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7651 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7731 [TB_WRITE]: paddr = 0000000c | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7811 [TB_WRITE]: paddr = 00000010 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7891 [TB_WRITE]: paddr = 00000014 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7971 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =      13270 [[0;32m PASSED: Interrupt is asserted [0m]
+# -------------------------------------------------
+# t=     13351 [TB_READ]: paddr = 00000018 prdata = 00000001
+# -------------------------------------------------
+# t =      13351 [[0;32m PASS: prdata 32'00000001 at addr 00000018 is  correct [0m]
+# -------------------------------------------------
+# t=     13351 [TB_WRITE]: paddr = 00000018 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     13511 [TB_READ]: paddr = 00000018 prdata = 00000001
+# -------------------------------------------------
+# t =      13511 [[0;32m PASS: prdata 32'00000001 at addr 00000018 is  correct [0m]
+# -------------------------------------------------
+# t=     13511 [TB_WRITE]: paddr = 00000018 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     13671 [TB_READ]: paddr = 00000018 prdata = 00000000
+# -------------------------------------------------
+# t =      13671 [[0;32m PASS: prdata 32'00000000 at addr 00000018 is  correct [0m]
+# -------------------------------------------------
+# *****Check masking and unmasking
+# t=     13671 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     13751 [TB_WRITE]: paddr = 00000004 | pwdata = ffffff00 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     13831 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     13911 [TB_WRITE]: paddr = 0000000c | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     13991 [TB_WRITE]: paddr = 00000010 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     14071 [TB_WRITE]: paddr = 00000014 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     14151 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =      19450 [[0;32m PASSED: Interrupt is asserted [0m]
+# -------------------------------------------------
+# t=     19531 [TB_READ]: paddr = 00000018 prdata = 00000001
+# -------------------------------------------------
+# t =      19531 [[0;32m PASS: prdata 32'00000001 at addr 00000018 is  correct [0m]
+# -------------------------------------------------
+# t=     19531 [TB_WRITE]: paddr = 00000014 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     19691 [TB_READ]: paddr = 00000018 prdata = 00000001
+# -------------------------------------------------
+# t =      19691 [[0;32m PASS: prdata 32'00000001 at addr 00000018 is  correct [0m]
+# -------------------------------------------------
+# -------------------------------------------------
+# t =      19691 [[0;32m PASSED: tim_int is not asserted [0m]
+# -------------------------------------------------
+# t=     19691 [TB_WRITE]: paddr = 00000014 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =      19771 [[0;32m PASSED: tim_int is asserted [0m]
+# -------------------------------------------------
+# ******Check counter still count when interrupt
+# t=     24951 [TB_READ]: paddr = 00000004 prdata = 00000117
+# t=     25031 [TB_READ]: paddr = 00000008 prdata = 00000001
+# -------------------------------------------------
+# t =      25031 [[0;32m PASSED: Counter=0000000100000117  is still countinig  [0m]
+# -------------------------------------------------
+# ******Change TCMP when still counting
+# t=     25031 [TB_WRITE]: paddr = 00000018 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     25111 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     25191 [TB_WRITE]: paddr = 0000000c | pwdata = ffffffff | pstrb = f
+# tim_pslverr is not asserted.
+# t=     25271 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     27350 [TB_WRITE]: paddr = 0000000c | pwdata = 00000050 | pstrb = f
+# tim_pslverr is not asserted.
+# -------------------------------------------------
+# t =      27431 [[0;32m PASSED: tim_int is not asserted [0m]
+# -------------------------------------------------
+# TEST STATUS: PASS
+# ** Note: $finish    : ../tb/test_bench.v(71)
+#    Time: 27631 ns  Iteration: 0  Instance: /test_bench
+# Saving coverage database on exit...
+# End time: 01:04:55 on Jun 15,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1

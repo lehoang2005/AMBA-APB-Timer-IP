@@ -1,0 +1,141 @@
+# vsim -coverage -l cnt_counting_chk.log -c test_bench -voptargs="+cover=bcesft" -assertdebug -do "coverage save -onexit cnt_counting_chk.ucdb; log -r /*;run -all" 
+# Start time: 01:04:50 on Jun 15,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tb/test_bench.v(22): (vopt-2241) Connection width does not match width of port 'tim_paddr'. The port definition is at: ../rtl/timer_top.v(7).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.test_bench(fast)
+# coverage save -onexit cnt_counting_chk.ucdb
+#  log -r /*
+# run -all
+# ====================================================
+# =====Test Case: check counter counting check =======
+# ====================================================
+# Reseting ...
+# Reset done
+# **********Check at boundary of TDR0
+# t=       400 [TB_WRITE]: paddr = 00000004 | pwdata = ffffff00 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       471 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=       551 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      5831 [TB_READ]: paddr = 00000004 prdata = 00000003
+# t=      5911 [TB_READ]: paddr = 00000008 prdata = 00000001
+# -------------------------------------------------
+# t =       5911 [[0;32m PASSED: cnt =0000000100000003  match expected value [0m]
+# -------------------------------------------------
+# t=      5911 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# **********Check at boundary of TDR1
+# t=      5991 [TB_WRITE]: paddr = 00000004 | pwdata = ffffff00 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6071 [TB_WRITE]: paddr = 00000008 | pwdata = ffffffff | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6151 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     11431 [TB_READ]: paddr = 00000004 prdata = 00000003
+# t=     11511 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      11511 [[0;32m PASSED: cnt =0000000000000003  match expected value [0m]
+# -------------------------------------------------
+# t=     11511 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# **********Check at writing to counter when counting
+# A: check TDR0
+# t=     11591 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     11671 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     11751 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     17031 [TB_READ]: paddr = 00000004 prdata = 00000103
+# t=     17111 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      17111 [[0;32m PASSED: cnt =0000000000000103  match expected value [0m]
+# -------------------------------------------------
+# t=     17111 [TB_WRITE]: paddr = 00000004 | pwdata = ffffff00 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     22391 [TB_READ]: paddr = 00000004 prdata = 00000003
+# t=     22471 [TB_READ]: paddr = 00000008 prdata = 00000001
+# -------------------------------------------------
+# t =      22471 [[0;32m PASSED: cnt =0000000100000003  match expected value [0m]
+# -------------------------------------------------
+# t=     22471 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# **********Check at writing to counter when counting
+# B: check TDR1
+# t=     22551 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     22631 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     22711 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     27991 [TB_READ]: paddr = 00000004 prdata = 00000103
+# t=     28071 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      28071 [[0;32m PASSED: cnt =0000000000000103  match expected value [0m]
+# -------------------------------------------------
+# t=     28071 [TB_WRITE]: paddr = 00000004 | pwdata = ffffff00 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     28151 [TB_WRITE]: paddr = 00000008 | pwdata = ffffffff | pstrb = f
+# tim_pslverr is not asserted.
+# t=     33371 [TB_READ]: paddr = 00000004 prdata = 00000003
+# t=     33451 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      33451 [[0;32m PASSED: cnt =0000000000000003  match expected value [0m]
+# -------------------------------------------------
+# t=     33451 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# **********Check counter does not count when timer_en = 0
+# t=     33531 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     33611 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     33691 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     38971 [TB_READ]: paddr = 00000004 prdata = 00000000
+# t=     39051 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      39051 [[0;32m PASSED: cnt =0000000000000000  does not count [0m]
+# -------------------------------------------------
+# t=     39051 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# **********Check counter clear when timer_en H -> L
+# t=     39131 [TB_WRITE]: paddr = 00000004 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     39211 [TB_WRITE]: paddr = 00000008 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     39291 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     44571 [TB_READ]: paddr = 00000004 prdata = 00000103
+# t=     44651 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      44651 [[0;32m PASSED: cnt =0000000000000103  match expected value [0m]
+# -------------------------------------------------
+# t=     44651 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=     44911 [TB_READ]: paddr = 00000004 prdata = 00000000
+# t=     44991 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =      44991 [[0;32m PASSED: cnt =0000000000000000  is clear when timer_en H->L [0m]
+# -------------------------------------------------
+# TEST STATUS: PASS
+# ** Note: $finish    : ../tb/test_bench.v(71)
+#    Time: 45191 ns  Iteration: 0  Instance: /test_bench
+# Saving coverage database on exit...
+# End time: 01:04:51 on Jun 15,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1

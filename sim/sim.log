@@ -1,0 +1,84 @@
+# vsim -coverage -l halted_chk.log -c test_bench -voptargs="+cover=bcesft" -assertdebug -do "coverage save -onexit halted_chk.ucdb; log -r /*;run -all" 
+# Start time: 01:05:03 on Jun 15,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tb/test_bench.v(22): (vopt-2241) Connection width does not match width of port 'tim_paddr'. The port definition is at: ../rtl/timer_top.v(7).
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2024.3 linux_x86_64 Sep 10 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.test_bench(fast)
+# coverage save -onexit halted_chk.ucdb
+#  log -r /*
+# run -all
+# ====================================================
+# ==============Test Case: check Halt Mode ===========
+# ====================================================
+# Reseting ...
+# Reset done
+# *****Check stop and resume of halted mode
+# t=       400 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      2551 [TB_READ]: paddr = 00000004 prdata = 00000067
+# t=      2631 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =       2631 [[0;32m PASSED: cnt =0000000000000067  match expected value [0m]
+# -------------------------------------------------
+# Assert dbg_mode & halt_req
+# t=      2631 [TB_WRITE]: paddr = 0000001c | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      4791 [TB_READ]: paddr = 00000004 prdata = 00000071
+# t=      4871 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =       4871 [[0;32m PASSED: cnt =0000000000000071 is halted [0m]
+# -------------------------------------------------
+# Check halt_ack
+# t=      4951 [TB_READ]: paddr = 0000001c prdata = 00000003
+# -------------------------------------------------
+# t =       4951 [[0;32m PASS: prdata 32'00000003 at addr 0000001c is  correct [0m]
+# -------------------------------------------------
+# Resume counting after Halted mode
+# t=      4951 [TB_WRITE]: paddr = 0000001c | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6111 [TB_READ]: paddr = 00000004 prdata = 000000a5
+# t=      6191 [TB_READ]: paddr = 00000008 prdata = 00000000
+# -------------------------------------------------
+# t =       6191 [[0;32m PASSED: cnt =00000000000000a5 counts correct after halted [0m]
+# -------------------------------------------------
+# t=      6191 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# *****Check TDR access while halted
+# t=      6271 [TB_WRITE]: paddr = 00000000 | pwdata = 00000000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6351 [TB_WRITE]: paddr = 00000000 | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6431 [TB_WRITE]: paddr = 0000001c | pwdata = 00000001 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6511 [TB_WRITE]: paddr = 00000004 | pwdata = 0000ffff | pstrb = f
+# tim_pslverr is not asserted.
+# t=      6591 [TB_WRITE]: paddr = 00000008 | pwdata = ffff0000 | pstrb = f
+# tim_pslverr is not asserted.
+# t=      7751 [TB_READ]: paddr = 00000004 prdata = 0000ffff
+# -------------------------------------------------
+# t =       7751 [[0;32m PASS: prdata 32'0000ffff at addr 00000004 is  correct [0m]
+# -------------------------------------------------
+# t=      7831 [TB_READ]: paddr = 00000008 prdata = ffff0000
+# -------------------------------------------------
+# t =       7831 [[0;32m PASS: prdata 32'ffff0000 at addr 00000008 is  correct [0m]
+# -------------------------------------------------
+# TEST STATUS: PASS
+# ** Note: $finish    : ../tb/test_bench.v(71)
+#    Time: 8031 ns  Iteration: 0  Instance: /test_bench
+# Saving coverage database on exit...
+# End time: 01:05:03 on Jun 15,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
