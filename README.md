@@ -1,19 +1,17 @@
 # AMBA APB Timer IP — RTL-to-DFT Implementation Project
 
 **Author:** Lê Phạm Thái Hoàng  
-**HDL:** Verilog  
-**Bus Interface:** AMBA APB  
-**Project Direction:** RTL Design, Logic Synthesis, Static Timing Analysis and Design for Test
+**Project Direction:** RTL Design, Synthesis, STA and DFT (middle-end)
 
 ---
 
 ## Project Overview
 
-This repository contains a 64-bit AMBA APB Timer IP developed as a progressive ASIC learning project.
+This repository contains a 64-bit AMBA APB Timer IP.
 
-The initial RTL design and functional verification phases establish a stable functional baseline. The project is then extended beyond RTL simulation toward:
+The RTL design and verification phases make sure a stable baseline. The project is then extended toward:
 
-- Logic synthesis and technology mapping
+- Logic synthesis
 - Gate-level netlist verification
 - Static Timing Analysis
 - Scan architecture design
@@ -62,20 +60,18 @@ The RTL and functional verification stages have been completed. Synthesis, STA a
 
 ## Design Specification
 
-The Timer IP provides a memory-mapped timer peripheral connected through an AMBA APB interface.
+The Timer IP presents a memory-mapped timer peripheral connected through an AMBA APB interface.
 
 ### Timer Functions
 
 - 64-bit count-up counter
 - Active-low asynchronous reset
 - Normal counting mode
-- Programmable divided-counting mode
-- Clock division from divide-by-2 up to divide-by-256
+- Programmable divided-counting mode, Clock division from divide-by-2 up to divide-by-256
 - Hardware timer enable and disable
 - Counter reset when `timer_en` changes from high to low
 - Debug-assisted halt mode
 - Software halt request through `THCSR`
-- Halt acknowledgement status
 
 ### AMBA APB Interface
 
@@ -108,9 +104,9 @@ The Timer IP provides a memory-mapped timer peripheral connected through an AMBA
 | `0x14` | TIER | Timer Interrupt Enable Register |
 | `0x18` | TISR | Timer Interrupt Status Register |
 | `0x1C` | THCSR | Timer Halt Control and Status Register |
-| Others | Reserved | Reserved address space |
+| Others | Reserved | |
 
-Detailed bit-field descriptions are available in the project report and will later be separated into the design documentation directory.
+Detailed bit-field descriptions are in `rtl/`.
 
 ---
 
