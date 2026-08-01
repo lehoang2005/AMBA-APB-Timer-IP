@@ -1,4 +1,4 @@
-# AMBA APB Timer IP (Advanced)
+# AMBA APB Timer IP
 
 **Author:** Lê Phạm Thái Hoàng  
 
