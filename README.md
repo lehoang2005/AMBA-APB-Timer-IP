@@ -114,19 +114,19 @@ Detailed bit-field descriptions are in `rtl/`.
 
 The RTL implementation is partitioned into five main functional blocks:
 
-1. **APB Slave Interface**  
+1. **APB Slave**  
    Generates read and write enables, inserts the wait state and reports APB access errors.
 
-2. **Register Block**  
+2. **Register**  
    Implements the control, counter-data, compare, interrupt and halt-control registers.
 
 3. **Counter Control**  
    Handles timer enable, halt behavior, clock division and counter clear control.
 
-4. **64-bit Counter**  
+4. **Counter**  
    Maintains the timer value and supports software byte writes through `TDR0` and `TDR1`.
 
-5. **Interrupt Logic**  
+5. **Interrupt**  
    Detects compare matches and generates the timer interrupt from the interrupt-enable and status signals.
 
 <img width="2048" height="947" alt="APB Timer block diagram" src="https://github.com/user-attachments/assets/a75aeaf3-30e3-409a-9a64-2ebaee24d161" />
@@ -137,31 +137,10 @@ This modular structure provides clear synthesis boundaries and will later suppor
 
 ## RTL and Verification Baseline
 
-The RTL and functional verification stages provide the reference behavior for all later implementation phases.
 
-The existing verification environment covers:
-
-- Register reset-value checking
-- Register read and write operations
-- APB read and write transfers
-- APB wait-state behavior
-- Byte-strobe accesses
-- Invalid configuration error responses
-- Normal counter operation
-- Divided-counting modes
-- Timer enable and clear behavior
-- Debug and software halt behavior
-- Compare-match conditions
-- Interrupt enable, masking and clearing
-- Multiple APB accesses
-
-The current regression contains **13 passing testcases**. The design was also compared with the provided Golden Model.
-
-Code coverage reached **100% after justified exclusions** for unreachable or protocol-invalid conditions. These exclusions and their reasoning are documented in the original project report.
 
 <img width="2048" height="905" alt="APB Timer verification results" src="https://github.com/user-attachments/assets/ab8d48ef-fec0-4064-b046-b81f0761ba1d" />
 
-The functional testbench will be reused for post-synthesis and post-DFT regression whenever the generated netlist remains simulation-compatible.
 
 ---
 
